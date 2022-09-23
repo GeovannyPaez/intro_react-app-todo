@@ -5,6 +5,7 @@ export function useLocalStorage(itemName, initialValue){
     const [loading, setLoading]= React.useState(true)
     const [error, setError]= React.useState(false)
     const [item,setItem]= React.useState(initialValue);
+    
 
 
     React.useEffect(()=>{
@@ -32,8 +33,7 @@ export function useLocalStorage(itemName, initialValue){
         }catch(err){
             setError(err);
         }
-        
-    } 
+    }
     return[
         item,
         {
