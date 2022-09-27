@@ -28,6 +28,7 @@ function App() {
     setInputSearchValue,
     onAdd
 } = useTodos();
+    // console.log(todosSearched.length)
   return (
     <React.Fragment>
             <TodoHeader>
@@ -40,14 +41,17 @@ function App() {
                 setInputSearchValue={setInputSearchValue}
             />
             </TodoHeader>
-                    {/* <TodoList
+                    <TodoList
+                        textSearchValue={inputSearchValue}
+                        totalTodos={totalTodos}
                         error={error}
                         loading={loading}
                         todosSearched={todosSearched}
                         onError={()=><p>Desesperate ha ocurrido un error...</p>}
                         onLoading={()=><LoadingSkeletons/>}
                         onEmptyTodos={()=><p>¡Crear tu primer TODO!</p>}
-                        render={(todo)=>(
+                        onEmptySearchResult={(searchText)=><p>No se encuentran resultados de <strong>{searchText}</strong></p>}
+                        render={todo=>(
                             <TodoItem 
                             key={todo.text} 
                             text ={todo.text} 
@@ -57,8 +61,19 @@ function App() {
                             />
                         )}
                         >
-                    </TodoList> */}
-                    <TodoList>
+                            {/* render Functions, es decir le enviamos una funcion a la propiedad children y en el componenete validamos que se hacee con ella. */}
+                            {
+                            todo=>(
+                            <TodoItem 
+                            key={todo.text} 
+                            text ={todo.text} 
+                            completed ={todo.isComplete}
+                            onToggleComplete= {onToggleComplete}
+                            onDelete={onDelete}
+                            />) 
+                            }
+                    </TodoList>
+                    {/* <TodoList>
                         {error && <p>Desesperate ha ocurrido un error...</p>}
                         {loading && <LoadingSkeletons/>}
                         {(!loading && !todosSearched.length)&& <p>¡Crear tu primer TODO!</p>}
@@ -71,7 +86,7 @@ function App() {
                             onDelete={onDelete}
                             />
                         ))}
-                    </TodoList>
+                    </TodoList> */}
                     {
                         !!modal &&(
                             <Modal>
