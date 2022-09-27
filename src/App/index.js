@@ -40,7 +40,7 @@ function App() {
                 setInputSearchValue={setInputSearchValue}
             />
             </TodoHeader>
-                    <TodoList
+                    {/* <TodoList
                         error={error}
                         loading={loading}
                         todosSearched={todosSearched}
@@ -57,15 +57,21 @@ function App() {
                             />
                         )}
                         >
-                    </TodoList>
-                    {/* <TodoList>
-                        {error && }
-                        {loading && <LoadingSkeletons/>}
-                        {(!loading && !todosSearched.length)&& }
-                        {todosSearched.map(todo=>(
-                            
-                        ))}
                     </TodoList> */}
+                    <TodoList>
+                        {error && <p>Desesperate ha ocurrido un error...</p>}
+                        {loading && <LoadingSkeletons/>}
+                        {(!loading && !todosSearched.length)&& <p>¡Crear tu primer TODO!</p>}
+                        {todosSearched.map(todo=>(
+                            <TodoItem 
+                            key={todo.text} 
+                            text ={todo.text} 
+                            completed ={todo.isComplete}
+                            onToggleComplete= {onToggleComplete}
+                            onDelete={onDelete}
+                            />
+                        ))}
+                    </TodoList>
                     {
                         !!modal &&(
                             <Modal>
