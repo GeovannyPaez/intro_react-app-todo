@@ -1,0 +1,32 @@
+.container-alert{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(195, 195, 195);
+    opacity: 75%;
+    z-index: 2;
+   
+}
+.alert{
+    width: 100%;
+    height: 30%;
+    padding-bottom: 40px;
+    font-size: 1rem;
+    background-color: black;
+    color:  white;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    opacity: 1;
+
+}
+.alert button{
+    background-color: #61dafa;
+    padding: 5px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
