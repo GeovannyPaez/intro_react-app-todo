@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 
 
 function useTodos() {
-    const [todos, { saveItem: saveTodos, loading, error }] = useLocalStorage(
+    const [todos, { saveItem: saveTodos, loading, error}] = useLocalStorage(
         "TODOS_V1",
         []
     );
@@ -70,7 +70,7 @@ function useTodos() {
             loading,
             error,
             modal,
-            setModal
+            setModal,
         })
 }
 

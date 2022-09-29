@@ -6,15 +6,13 @@ export function useLocalStorage(itemName, initialValue){
     const [error, setError]= React.useState(false)
     const [item,setItem]= React.useState(initialValue);
     
-
+    const getItem=()=>{
+        return JSON.parse(localStorage.getItem(itemName)) ;
+    }
 
     React.useEffect(()=>{
         setTimeout(()=>{
             try {
-                const getItem=()=>{
-                    return JSON.parse(localStorage.getItem(itemName)) ;
-                }
-                
                 let parsetItem= getItem() || initialValue; 
     
                 setItem(parsetItem);
@@ -23,7 +21,7 @@ export function useLocalStorage(itemName, initialValue){
                 setError(error)
             }
         },1000)
-    })
+    },[])
     
 
     const saveItem=newItem=>{
@@ -39,7 +37,7 @@ export function useLocalStorage(itemName, initialValue){
         {
         saveItem,
         loading,
-        error
+        error,
         }
         
     ]

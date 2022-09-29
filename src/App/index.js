@@ -11,7 +11,7 @@ import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import { LoadingSkeletons } from "../LoadingSkeletons";
 import { TodoHeader } from "../TodoHeader";
-
+import { ChangeAlert } from "../ChangeAlert";
 
 function App() {
   const {
@@ -26,19 +26,21 @@ function App() {
     totalTodos,
     inputSearchValue,
     setInputSearchValue,
-    onAdd
+    onAdd,
 } = useTodos();
-    // console.log(todosSearched.length)
+    // console.log(loading)
   return (
     <React.Fragment>
-            <TodoHeader>
+            <TodoHeader loading= {loading}>
             <TodoCounter
                 completeTodos={completeTodos}
-                totalTodos={totalTodos}
+                totalTodos={totalTodos} 
+                // loading= {loading}
             />
             <TodoSearch
                 inputSearchValue={inputSearchValue}
                 setInputSearchValue={setInputSearchValue}
+                // loading={loading}
             />
             </TodoHeader>
                     <TodoList
@@ -51,6 +53,9 @@ function App() {
                         onLoading={()=><LoadingSkeletons/>}
                         onEmptyTodos={()=><p>¡Crear tu primer TODO!</p>}
                         onEmptySearchResult={(searchText)=><p>No se encuentran resultados de <strong>{searchText}</strong></p>}
+                        /*en el render prop, enviamos una propiedad con una funcion que retorna un componente hijo
+                        
+                        y en el componente validamos en que momento ejecutar el render*/
                         render={todo=>(
                             <TodoItem 
                             key={todo.text} 
@@ -101,6 +106,7 @@ function App() {
             setModal={setModal}
             modal={modal}
             />
+            <ChangeAlert/>
         </React.Fragment>
   );
 }

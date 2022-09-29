@@ -4,3 +4,6 @@
     margin: 0;
     padding: 48px;
   }
+  .TodoCounter--skeleton{
+    opacity:20%;
+  }

@@ -2,7 +2,7 @@ import React from "react";
 import './TodoSearch.css';
 // import { TodoContext } from "../App/useTodos";
 
-export function TodoSearch({inputSearchValue,setInputSearchValue}){
+export function TodoSearch({inputSearchValue,setInputSearchValue,loading}){
     const onSearchInputValue=(e)=>{
         // console.log(e.target.value);
         setInputSearchValue(e.target.value)
@@ -13,6 +13,7 @@ export function TodoSearch({inputSearchValue,setInputSearchValue}){
                 placeholder="Search Todos"
                 value={inputSearchValue}
                 onChange={onSearchInputValue}
+                disabled={loading}
                 />
         
     )
