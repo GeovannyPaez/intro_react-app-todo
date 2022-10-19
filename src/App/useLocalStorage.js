@@ -27,7 +27,6 @@ export function useLocalStorage(itemName, initialValue){
             try {
                 let parsetItem= getItem() || initialValue; 
                 setItem(parsetItem);
-                console.log(parsetItem);
                 setLoading(false);
             } catch (error) {
                 setError(error)

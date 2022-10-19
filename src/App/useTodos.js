@@ -57,21 +57,28 @@ function useTodos() {
         saveTodos(newTodos)
     }
 
+    const states= {
+        totalTodos,
+        completeTodos,
+        inputSearchValue,
+        todosSearched,
+        loading,
+        error,
+        modal,
+    }
+    const statesUpdaters={
+        setModal,
+        onToggleComplete,
+        onDelete,
+        onAdd,
+        setInputSearchValue,
+    }
+    
     return (
         {
-            totalTodos,
-            completeTodos,
-            inputSearchValue,
-            setInputSearchValue,
-            todosSearched,
-            onToggleComplete,
-            onDelete,
-            onAdd,
-            loading,
-            error,
-            modal,
-            setModal,
-        })
+            states,
+            statesUpdaters
+        });
 }
 
 export {useTodos}

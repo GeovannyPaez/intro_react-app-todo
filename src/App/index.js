@@ -15,19 +15,24 @@ import { ChangeAlert } from "../ChangeAlert";
 
 function App() {
   const {
-    error,
-    loading,
-    todosSearched,
-    onDelete,
-    onToggleComplete,
-    modal,
-    setModal,
-    completeTodos, 
-    totalTodos,
-    inputSearchValue,
-    setInputSearchValue,
-    onAdd,
-} = useTodos();
+    states, statesUpdaters} = useTodos();
+
+    const {
+        totalTodos,
+        completeTodos,
+        inputSearchValue,
+        todosSearched,
+        loading,
+        error,
+        modal,
+    }= states;
+    const {
+        setModal,
+        onToggleComplete,
+        onDelete,
+        onAdd,
+        setInputSearchValue,
+    }= statesUpdaters;
     // console.log(loading)
   return (
     <React.Fragment>
