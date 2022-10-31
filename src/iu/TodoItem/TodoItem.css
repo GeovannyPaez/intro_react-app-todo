@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 24px;
-    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+    box-shadow: 0px 5px 50px #20232926;
   }
   
   .TodoItem-p {
@@ -16,8 +16,8 @@
     font-weight: 400;
     word-break: break-all;
   }
-  .TodoItem-p--complete {
-    text-decoration: line-through;
+  .TodoItem-p--complete{
+    text-decoration:line-through;
   }
   
   .Icon {
@@ -39,7 +39,13 @@
   .Icon-check--active {
     color: #4caf50;
   }
-  
+  .icon-edict{
+    position: absolute;
+    top: -12px;
+    right: 48px;
+    cursor: pointer;
+  }
+ 
   .Icon-delete {
     position: absolute;
     top: -24px;

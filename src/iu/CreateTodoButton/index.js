@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 // import { Modal } from "../Modal";
 import './CreateTodoButton.css'
 
- export function CreateTodoButton ({setModal,modal}){
+ export function CreateTodoButton (){
+    const navigate= useNavigate();
     const onClickBtn= ()=>{
-        setModal(!modal);
+        navigate('/new');
     }
     return(
         <button 

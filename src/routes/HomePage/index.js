@@ -1,19 +1,21 @@
 import React from "react";
 // import './App.css';
-import { useTodos } from "./useTodos";
-import {TodoCounter } from "../TodoCounter";
-import {TodoSearch} from '../TodoSearch';
-import {TodoItem} from '../TodoItem';
-import {TodoList} from '../TodoList';
-import {CreateTodoButton} from '../CreateTodoButton'
+import { useTodos } from "../useTodos";
+import {TodoCounter } from "../../iu/TodoCounter";
+import {TodoSearch} from '../../iu/TodoSearch';
+import {TodoItem} from '../../iu/TodoItem';
+import {TodoList} from '../../iu/TodoList';
+import {CreateTodoButton} from '../../iu/CreateTodoButton'
 
-import { Modal } from "../Modal";
-import { TodoForm } from "../TodoForm";
-import { LoadingSkeletons } from "../LoadingSkeletons";
-import { TodoHeader } from "../TodoHeader";
-import { ChangeAlert } from "../ChangeAlert";
+// import { Modal } from "../../iu/Modal";
+// import { TodoForm } from "../../iu/TodoForm";
+import { LoadingSkeletons } from "../../iu/LoadingSkeletons";
+import { TodoHeader } from "../../iu/TodoHeader";
+import { ChangeAlert } from "../../iu/ChangeAlert";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+function HomePage() {
+    const navigate= useNavigate();
   const {
     states, statesUpdaters} = useTodos();
 
@@ -24,13 +26,13 @@ function App() {
         todosSearched,
         loading,
         error,
-        modal,
+        // modal,
     }= states;
     const {
-        setModal,
+        // setModal,
         onToggleComplete,
         onDelete,
-        onAdd,
+        // onAdd,
         setInputSearchValue,
     }= statesUpdaters;
     // console.log(loading)
@@ -65,9 +67,13 @@ function App() {
                             <TodoItem 
                             key={todo.text} 
                             text ={todo.text} 
+                            id= {todo.id}
                             completed ={todo.isComplete}
                             onToggleComplete= {onToggleComplete}
                             onDelete={onDelete}
+                            onEdict= {()=>navigate('/edit/'+todo.id,{
+                                state: {todo}
+                            })}
                             />
                         )}
                         >
@@ -77,9 +83,11 @@ function App() {
                             <TodoItem 
                             key={todo.text} 
                             text ={todo.text} 
+                            id= {todo.id}
                             completed ={todo.isComplete}
                             onToggleComplete= {onToggleComplete}
                             onDelete={onDelete}
+                            onEdict={()=>console.log('on edict')}
                             />) 
                             }
                     </TodoList>
@@ -97,7 +105,7 @@ function App() {
                             />
                         ))}
                     </TodoList> */}
-                    {
+                    {/* {
                         !!modal &&(
                             <Modal>
                                 <TodoForm
@@ -106,14 +114,14 @@ function App() {
                                 />
                             </Modal>
                         )
-                    }
+                    } */}
             <CreateTodoButton 
-            setModal={setModal}
-            modal={modal}
+            // setModal={setModal}
+            // modal={modal}
             />
             <ChangeAlert/>
         </React.Fragment>
   );
 }
 
-export default App;
+export default HomePage;

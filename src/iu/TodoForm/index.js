@@ -1,31 +1,40 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import './TodoForm.css'
 
-export function TodoForm({onAdd ,setModal}) {
-    const [valueNewTodo,setValueNewTodo]=React.useState(' ');
+export function TodoForm(props) {
+    const navigate = useNavigate();
+    const [valueNewTodo,setValueNewTodo]=React.useState('');
+
     const onChange= e=>{
         const value= e.target.value;
-        
         setValueNewTodo(value);
     }
+  
     function onSubmit(){
-        // e.prevenDeafault();
-        console.log(valueNewTodo);
-        onAdd(valueNewTodo);
-        setModal(false)
+        if (props.textButton!= 'Añadir') {
+            props.onEdict(Number(props.id),valueNewTodo);
+            navigate('/');
+            return;
+        } 
+            props.onAdd(valueNewTodo);
+            navigate('/');
     }
+
     function onCancel(){
-        setModal(false);
+        navigate('/');
     }
+
     return (
     <form>
-        <label>Escribe tu nuevo To Do</label>
+        <label>{props.label}</label>
         <textarea
-            value = {valueNewTodo}
-            onChange = {onChange}
-            placeholder = "Escribe una nueva tarea"
-        />
+            onChange={onChange}
+            placeholder={props.placeholder}
+            defaultValue={props.todoEdict? props.todoEdict.text: valueNewTodo}
+        > 
+        </textarea>
         <div className="TodoForm-buttonContainer">
             <button
                 type="button"
@@ -40,7 +49,7 @@ export function TodoForm({onAdd ,setModal}) {
                 type= "button"
                 onClick={onSubmit}
             >
-            Añadir
+            {props.textButton}
             </button>
             </div>
     </form>)
